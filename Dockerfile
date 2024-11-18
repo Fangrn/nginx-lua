@@ -62,8 +62,8 @@ RUN ./configure --prefix=/etc/nginx \
 RUN rm -rf /usr/src/nginx
 
 # 复制自定义的 Nginx 配置文件和 SSL 证书文件
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY ssl /etc/nginx/ssl
+# COPY nginx.conf /etc/nginx/nginx.conf
+# COPY ssl /etc/nginx/ssl
 
 # 设置工作目录为 Nginx 默认的 HTML 目录
 WORKDIR /usr/share/nginx/html
