@@ -34,9 +34,9 @@ RUN mkdir -p /usr/src/nginx && \
     git clone https://github.com/openresty/lua-nginx-module.git && \
     # 下载 Sub Filter 模块（ngx_http_substitutions_filter_module）
     wget https://github.com/yaoweibin/ngx_http_substitutions_filter_module/archive/refs/tags/v0.8.1.tar.gz && \
-    tar -xzvf v0.8.1.tar.gz && \
+    tar -xzvf v0.8.1.tar.gz
     # 配置并编译 Nginx，启用各种常用模块
-    ./configure --prefix=/etc/nginx \
+RUN ./configure --prefix=/etc/nginx \
     --with-http_ssl_module \
     --with-http_v2_module \
     --with-http_sub_module \
