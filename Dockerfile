@@ -18,11 +18,11 @@ RUN apt-get update && apt-get install -y \
     git \
     unzip \
     wget \
-    ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+    ca-certificates;
+RUN rm -rf /var/lib/apt/lists/*;
 
 # 安装 OpenSSL（支持 HTTPS）
-RUN apt-get update && apt-get install -y openssl
+RUN apt-get update && apt-get install -y openssl;
 
 # 下载并编译 Nginx
 RUN mkdir -p /usr/src/nginx && \
@@ -34,8 +34,8 @@ RUN mkdir -p /usr/src/nginx && \
     git clone https://github.com/openresty/lua-nginx-module.git && \
     # 下载 Sub Filter 模块（ngx_http_substitutions_filter_module）
     wget https://github.com/yaoweibin/ngx_http_substitutions_filter_module/archive/refs/tags/v0.8.1.tar.gz && \
-    tar -xzvf v0.8.1.tar.gz
-    # 配置并编译 Nginx，启用各种常用模块
+    tar -xzvf v0.8.1.tar.gz;
+# 配置并编译 Nginx，启用各种常用模块
 RUN ./configure --prefix=/etc/nginx \
     --with-http_ssl_module \
     --with-http_v2_module \
@@ -56,7 +56,7 @@ RUN ./configure --prefix=/etc/nginx \
     --with-http_lua_module \
     --with-http_auth_request_module \
     --with-compat \
-    && make && make install
+    && make && make install;
 
 # 删除编译文件以减小镜像大小
 RUN rm -rf /usr/src/nginx
